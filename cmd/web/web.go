@@ -1,7 +1,6 @@
 package web
 
 import (
-	"log"
 	"net/http"
 	"time"
 
@@ -11,7 +10,7 @@ import (
 	"github.com/luchojuarez/call-sorter/internal/handlers"
 )
 
-func NewWebServer() {
+func NewWebServer() *http.Server {
 	c := container.GetSimpleContainer()
 
 	proccesor := invoice.NewProcessor(c.GetLocalCallRepository(), c.GetRestUserRepository())
@@ -23,14 +22,12 @@ func NewWebServer() {
 
 	router.HandleFunc("/v1/invoice/{year}/{month}", handler.Generate)
 
-	srv := &http.Server{
+	return &http.Server{
 		Handler:      router,
 		Addr:         "127.0.0.1:8080",
 		WriteTimeout: 15 * time.Second,
 		ReadTimeout:  15 * time.Second,
 	}
-
-	log.Fatal(srv.ListenAndServe())
 }
 
 func setJsonResponse(next http.Handler) http.Handler {
