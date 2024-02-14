@@ -31,14 +31,6 @@ func FromUserRepo(input user.Model) InvoiceUser {
 	}
 }
 
-type CallType int
-
-const (
-	CallTypeNational CallType = 1 + iota
-	CallTypeInternational
-	CallTypeFirends
-)
-
 type Call struct {
 	PhoneNumber string    `json:"phone_number"`
 	Duration    int       `json:"duration"`
