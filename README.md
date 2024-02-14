@@ -14,7 +14,7 @@ curl --location --request GET 'localhost:8080/v1/invoice/2021/1' --header 'phone
 ## Some disclaimers
 in challenge says: "generate", in order of this, will be use a POST method in this senario, for the meneang of POST verb.
 
-choose use header `phone_numner` header, to get key to identify the current user in order to emulate some user token.
+choose use `phone_numner` header, to get key to identify the current user in order to emulate some user token.
 
 This code probably taste like an overkill solution, but it was funny to wrote.
 I hope you enjoy reading and testing
